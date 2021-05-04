@@ -1,6 +1,6 @@
 import arviz as az
 
-from bambi import Model
+from bambi import Model, Prior
 from pandas import read_csv
 
 if __name__ == '__main__':
@@ -17,11 +17,12 @@ if __name__ == '__main__':
     # Print posterior summary
     print(az.summary(model_result))
 
-    model = Model("y ~ x1 + x2 + x3 + (1 | group_index)", gamma_data, family="gamma", link="log")
-    model_result = model.fit()
+    #priors = {"1|group_index": Prior("Normal", mu=0, sd=10)}
+    #model = Model("y ~ x1", gamma_data, family="gamma", link="log")
+    #model_result = model.fit()
 
     # Print model summary
-    print(model)
+    #print(model)
 
     # Print posterior summary
-    print(az.summary(model_result))
+    #print(az.summary(model_result))
